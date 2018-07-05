@@ -2,3 +2,6 @@
 # TLDR I don't want it
 
 markdown_ext:        "nothanks"
+exclude:             [ "dummy" ]
+source:              dummy
+collections_dir:     dummy
