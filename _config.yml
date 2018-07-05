@@ -1,0 +1,4 @@
+# jekyll config for gh-pages
+# TLDR I don't want it
+
+markdown_ext:        "nothanks"
