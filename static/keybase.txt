@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/m0sa
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://m0sa.net
+  * I am m0sa (https://keybase.io/m0sa) on keybase.
+  * I have a public key ASAavKcbBv6nHLYVkk6S6ok_cEEKg0TWjww4sulsl1EfzAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01201abca71b06fea71cb615924e92ea893f70410a8344d68f0c38b2e96c97511fcc0a",
+      "host": "keybase.io",
+      "kid": "01201abca71b06fea71cb615924e92ea893f70410a8344d68f0c38b2e96c97511fcc0a",
+      "uid": "a7454e69e4f7997e8ad2c4530ca2ab19",
+      "username": "m0sa"
+    },
+    "merkle_root": {
+      "ctime": 1530826941,
+      "hash": "ca98ff2887784c684fd0ff8c47a21040c5904a84409570d8d89b8a43bc06e55dcbee14136c7a2ef39511921427dd3cfbebba6f96c9bffa34e0b89e0d5c4e6774",
+      "hash_meta": "012c242a99b574c435d9b42cf37ef14cc5a37771ee95a4b32b6e602808716d60",
+      "seqno": 3206443
+    },
+    "service": {
+      "entropy": "nURsSL26gUwKXUUW7rBIivLL",
+      "hostname": "m0sa.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.1.2"
+  },
+  "ctime": 1530826967,
+  "expire_in": 504576000,
+  "prev": "10f215419228a5155d9e131a3deeee553e72b2c887a08c337cab946ce6f32aef",
+  "seqno": 21,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgGrynGwb+pxy2FZJOkuqJP3BBCoNE1o8MOLLpbJdRH8wKp3BheWxvYWTESpcCFcQgEPIVQZIopRVdnhMaPe7uVT5yssiHoIwzfKuUbObzKu/EIEuTBZ99fdMx9RfE0nF+qYOJnY/ZyBiciT5DC/AyPAVDAgHCo3NpZ8RAOuCNqTd4pQX81OVNWYe2Z7RtlJRRRUfw7nB2FgBZiXdLogb5whGnbs6eoedkEr88YkvHmJ355CIVTYCiZ8eRB6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPWpLIHraifbfwCw8Kxy36yTAmGI9VGsOb08Nl5Kqng5o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/m0sa
+
+==================================================================
