@@ -27,12 +27,8 @@ Nowadays I use VS Code for as many things as possible, and I'd really like to us
     $/m0sa.github.io/themes> git submodule add https://github.com/avianto/hugo-kiera
     ```
 
-    Luckily it's pretty easy to override stuff in the themes. The one I've picked, doesn't have a rss `<link>` tag in the header.
-    So I've copied the partials/header_includes from the theme up to my folder and tweaked it.
-    Easy peasy.
-
-    I had to do the same to get blog post titles into the `<title>` tag.
-
+    Luckily it's pretty easy to override stuff in the themes. The one I've picked, doesn't have a rss `<link>` tag, and the blog post titles into the `<title>` in the header.
+    So I've copied the `partials/header` from the theme into my `layouts` folder and tweaked it.
 
 1. Get markdown content of my blogger posts
 
@@ -44,6 +40,8 @@ Nowadays I use VS Code for as many things as possible, and I'd really like to us
 1. Set up hosting
 
     Initially I wanted to go with github pages, but I went with netlify instead. It has all the bells and whistles (can force https + hsts with an auto generated let's encrypt cert, CDN), and is more flexible later on (can easily add formst, AWS functions, etc), if I ever need it to be.
+
+    I followed the guide on the [hugo homepage](https://gohugo.io/hosting-and-deployment/hosting-on-netlify/).
 
 
 1. Point redirect from old blogger URLs to the new ones (not done yet...)
