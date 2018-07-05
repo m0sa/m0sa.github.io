@@ -2,6 +2,7 @@
 title = "about"
 menu = "main"
 weight = "20"
+meta = "false"
 +++
 
 - [My articles on the Stack Overflow Blog](https://stackoverflow.blog/authors/m0sa/)
