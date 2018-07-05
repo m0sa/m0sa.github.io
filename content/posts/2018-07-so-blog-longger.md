@@ -1,6 +1,7 @@
 +++
 title = "So long blogger"
 date = "2018-07-05"
+description = "migrating from blogger to hugo on netlify"
 categories = [ "Development" ]
 +++
 
