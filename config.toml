@@ -1,3 +1,28 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+baseurl = "https://m0sa.net/"
+title = "m0sa.net"
+copyright = "Copyright &copy; 2018 - m0sa.net"
+canonifyurls = true
+theme = "kiera"
+
+paginate = 3
+
+summaryLength = 30
+enableEmoji = true
+pygmentsCodeFences = true
+
+disqusShortname = "" #Disqus shortname
+googleAnalytics = "" #Google Analytics ID
+
+[author]
+    name = "Samo Prelog"
+    github = "m0sa"
+    gitlab = "samo.prelog"
+    linkedin = "samoprelog"
+    facebook = "samo.prelog"
+    twitter = "m0sa"
+    instagram = ""
+
+[params]
+    tagline = "using System;"
+
+
