@@ -1,5 +1,6 @@
 +++
 title = "Roslyn Adventures: Optimizing StringBuilder string interpolation"
+description = "Roslyn Adventures: Optimizing StringBuilder string interpolation"
 date = "2015-10-19"
 categories = [ "Development" ]
 +++

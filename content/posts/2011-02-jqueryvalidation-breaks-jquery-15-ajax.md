@@ -1,5 +1,6 @@
 +++
 title = "jQuery.validation breaks jQuery 1.5 ajax API"
+description = "jQuery.validation breaks jQuery 1.5 ajax API"
 date = "2011-02-03"
 categories = [ "Development" ]
 +++

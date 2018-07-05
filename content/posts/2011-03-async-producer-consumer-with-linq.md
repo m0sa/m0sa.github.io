@@ -1,5 +1,6 @@
 +++
 title = "Async Producer-Consumer with Linq, IEnumerable<T> and Threading.Tasks"
+description = "Async Producer-Consumer with Linq, IEnumerable<T> and Threading.Tasks"
 date = "2011-03-09"
 categories = [ "Development" ]
 +++

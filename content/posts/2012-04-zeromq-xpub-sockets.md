@@ -1,5 +1,6 @@
 +++
 title = "ZeroMQ XPUB sockets"
+description = "ZeroMQ XPUB sockets"
 date = "2012-04-04"
 categories = [ "Development" ]
 +++

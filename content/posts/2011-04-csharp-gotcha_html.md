@@ -1,5 +1,6 @@
 +++
 title = "C# gotcha"
+description = "C# gotcha"
 date = "2011-04-14"
 categories = [ "Development" ]
 +++

@@ -1,5 +1,6 @@
 +++
 title = "Roslyn Adventures: Walk the #line"
+description = "Hittingh debugger breakpoints after generating/rewriting C# code"
 date = "2014-11-14"
 categories = [ "Development" ]
 +++

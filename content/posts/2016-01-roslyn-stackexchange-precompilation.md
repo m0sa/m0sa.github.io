@@ -1,5 +1,6 @@
 +++
 title = "Roslyn Adventures: Metaprogramming with StackExchange.Precompilation"
+description = "Roslyn Adventures: Metaprogramming with StackExchange.Precompilation"
 date  = "2016-01-24"
 categories = [ "Development" ]
 +++

@@ -1,5 +1,6 @@
 +++
 title = "Obfuscated JS Hello World CodeGolf"
+description = "Obfuscated JS Hello World CodeGolf"
 date = "2011-02-04"
 categories = [ "Development" ]
 +++
