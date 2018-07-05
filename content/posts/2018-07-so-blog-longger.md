@@ -1,11 +1,10 @@
 +++
 title = "So long blogger"
-draft = "true"
 date = "2018-07-05"
 categories = [ "Development" ]
 +++
 
-It's been ~ 10 years since my first blog posts, and I've totally neglected blogging in the past year.
+It's been almost 10 years since my [first blog posts](http://blog.m0sa.net/2008/11/prva-objava.html), and I've totally neglected blogging in the past year.
 I totally blame blogger for that.
 I really want to blog more, so I've decided to move to a simpler setup, that'll allow me to blog more quickly, with better tools.
 Nowadays I use VS Code for as many things as possible, and I'd really like to use it for blogging to. So I've decided to use a static page generator, that works with markdown.
@@ -43,8 +42,13 @@ Nowadays I use VS Code for as many things as possible, and I'd really like to us
 
 1. Set up hosting
 
+    Initially I wanted to go with github pages, but I went with netlify instead. It has all the bells and whistles (can force https + hsts with an auto generated let's encrypt cert, CDN), and is more flexible later on (can easily add formst, AWS functions, etc), if I ever need it to be.
 
-1. Point redirect from old blogger URLs to the new ones
+
+1. Point redirect from old blogger URLs to the new ones (not done yet...)
+
     Injecting `<script type="text/javascript">window.location = "<NEW-URL>";</script>` into single posts should do the trick, as [suggested by Bjørn Bråthen on SO](https://stackoverflow.com/a/20276484/155005).
 
     Since I only pulled _some_ (== non-crappy) blog posts over, I didn't have to do this for everything.
+
+1. Profit?
