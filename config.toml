@@ -21,6 +21,7 @@ googleAnalytics = "" #Google Analytics ID
     facebook = "samo.prelog"
     twitter = "m0sa"
     instagram = ""
+    stackoverflow = "155005"
 
 [params]
     tagline = "using System;"
