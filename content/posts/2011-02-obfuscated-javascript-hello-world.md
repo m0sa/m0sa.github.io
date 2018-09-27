@@ -5,16 +5,16 @@ date = "2011-02-04"
 categories = [ "Development" ]
 +++
 
-Finally the [codegolf Stackexchange](http://codegolf.stackexchage.com) site is in beta. So I decided to give it a
+Finally the [codegolf Stackexchange](https://codegolf.stackexchage.com) site is in beta. So I decided to give it a
 try, as I found
-[this](http://codegolf.stackexchange.com/questions/307/obfuscated-hello-world)
+[this](https://codegolf.stackexchange.com/questions/307/obfuscated-hello-world)
 nice codegolf:
 
 [![golf](https://lh6.googleusercontent.com/_-AYvMXY8i7Q/TUtOiX1x-ZI/AAAAAAAAAEE/2ipQ5l8Q4d4/golf_thumb%5B1%5D.png?imgmax=800)](https://lh6.googleusercontent.com/_-AYvMXY8i7Q/TUtOiKTSVGI/AAAAAAAAAEA/RWA-
 _dMVaaE/s1600-h/golf%5B3%5D.png)
 
 So…. Behold my
-[solution](http://codegolf.stackexchange.com/questions/307/obfuscated-hello-
+[solution](https://codegolf.stackexchange.com/questions/307/obfuscated-hello-
 world/453#453) with JavaScript:
 
 ```javascript
@@ -28,5 +28,5 @@ Well if you would like to know how it works I suggest you read this blog post
 first (I've actually shared it in my Google Reader feed a month back, so you
 might have already seen it). The script uses the same principle to acquire the
 sort() function (and consequently the window object and alert() function) as
-described there. I also found this nice [video](http://vimeo.com/15961577)
+described there. I also found this nice [video](https://vimeo.com/15961577)
 that was very helpful.

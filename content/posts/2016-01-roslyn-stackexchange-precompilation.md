@@ -9,7 +9,7 @@ categories = [ "Development" ]
 In this article we'll wrap the
 [StringBuilderInterpolationOptimizer](https://gist.github.com/m0sa/f086bb0e9f62e05995c6#file-
 stringbuilderinterpolationoptimizer-cs) from my [previous
-article](http://blog.m0sa.net/2015/10/roslyn-adventures-optimizing.html) into
+article](https://m0sa.net/posts/2015-10-roslyn-adventures-optimizing-stringbuilder-interpolation/) into
 an
 [StackExchange.Precompiltion](https://blog.stackoverflow.com/2015/07/announcing-
 stackexchange-precompilation/) module, and use it to optimize an existing C#
