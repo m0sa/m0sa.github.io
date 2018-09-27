@@ -10,7 +10,7 @@ try, as I found
 [this](http://codegolf.stackexchange.com/questions/307/obfuscated-hello-world)
 nice codegolf:
 
-[![golf](http://lh6.ggpht.com/_-AYvMXY8i7Q/TUtOiX1x-ZI/AAAAAAAAAEE/2ipQ5l8Q4d4/golf_thumb%5B1%5D.png?imgmax=800)](http://lh6.ggpht.com/_-AYvMXY8i7Q/TUtOiKTSVGI/AAAAAAAAAEA/RWA-
+[![golf](https://lh6.googleusercontent.com/_-AYvMXY8i7Q/TUtOiX1x-ZI/AAAAAAAAAEE/2ipQ5l8Q4d4/golf_thumb%5B1%5D.png?imgmax=800)](https://lh6.googleusercontent.com/_-AYvMXY8i7Q/TUtOiKTSVGI/AAAAAAAAAEA/RWA-
 _dMVaaE/s1600-h/golf%5B3%5D.png)
 
 So…. Behold my
