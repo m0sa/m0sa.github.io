@@ -25,5 +25,6 @@ googleAnalytics = "UA-6745510-1" #Google Analytics ID
 
 [params]
     tagline = "using System;"
+    description = "m0sa.net"
 
 
