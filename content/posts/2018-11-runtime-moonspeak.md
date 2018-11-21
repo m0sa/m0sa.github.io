@@ -118,7 +118,7 @@ I've ran into an interesting edge case with [Roslyn vs MSBuild diagnostic levels
 I've skipped on one other important detail here, we have a separate tool that rewrites JavaScript, we just made it generate the same diagnostic messages as the C# tools.
 This allows us to run both that tool and the main build step in parallel, and get a unified view dump of all used strings in the end.
 
-### Other
+### Other tidbits
 Since we care about performance and a simple deployment model, we still don't want to hit the DB on application spin-up.
 We were still able to get code-gen all of our existing translations / resources into the .dll into as part of the build.
 We did that by exposing a `partial class` in code, and code-gen it's counterpart during build by executing a `.csx` file via [DotNetScript](https://github.com/filipw/dotnet-script).
