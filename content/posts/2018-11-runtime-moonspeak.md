@@ -60,10 +60,11 @@ This is the original source of "precompile localization" idea.
 
 But then, somewhere in the middle of localizing everything, we gave up.
 Turns out the perf hit of rendering a Razor view for every string you want to render, ever, was just to big.
+
+![Early benchmark screenshot](https://i.stack.imgur.com/GBKKS.png)
+
 We also needed to localize `.cs` files.
-
-[TODO IIRC there should be benchmark screenshots somewhere in hardcore][]
-
+Oh, and we also found a bunch of strings that needed new localization features, like multiple pluralization tokens, and the same string being used in different contexts that matter in some languages (e.g. [Declension](https://en.wikipedia.org/wiki/Declension)).
 Enter Roslyn tooling, again, but with a twist!
 At that time, `csc.exe` was still the default C# compiler, and `aspnet_compiler.exe` was (and still is super slow).
 So we replaced _both_ of them, with the Roslyn-based [StackExchange.Precompilation](https://github.com/StackExchange/StackExchange.Precompilation), and to top it of, we made it extensible so it could handle all of our localization needs (both extracting the strings, as well as precompiling localization in both `.cshtml` and `.cs` files).
@@ -74,14 +75,16 @@ You can read more about this whole project [here](https://stackoverflow.blog/201
 
 We currently still run on ASPNET MVC 5, on the full framework. Our ultimate goal is to be able to run on .NET Core. AspNetCore is the first stepping stone towards that.
 
-## Present
-
 As we were evaluating ASPNET vNext (== 5+), we had always hoped to roll with the metaprogramming features that were available in the previews, either there, or what was worked on in [Roslyn generators](https://github.com/dotnet/roslyn/blob/master/docs/features/generators.md).
 But the time to move to .NET Core and ASP.NET .NET Core is now, and unfortunately none of those features are around anymore...yet.
 Luckily, though, .NET tooling introduced some high-impact perf improvements that make the CLI tools much faster (e.g. `dotnet build-servers`).
 Additionally, AspNetCore Razor view pre-compilation is fast!
 
-We had to future-proof our tooling, while still maintaining backwards compatibility with our old MVC stack.
+We evaluated the [new ASP.NET Core localization features](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.1&viewFallbackFrom=asp%E2%80%8C%E2%80%8Bnetcore-2.1), but they seemed very allocate-y (it allocates an array every time, things get boxed, etc), and it doesn't support some of the syntax edge cases we have.
+Considering this, and the fact that we'd have to rewrite all of precious "_s&_m" code, we made the decision to keep rolling with our own localization framework.
+So we had to future-proof our tooling, while still maintaining backwards compatibility with our old MVC stack.
+
+## Present
 
 Our localization needs are still the same:
 
