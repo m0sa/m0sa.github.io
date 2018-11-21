@@ -96,7 +96,7 @@ Kudos to [@marcgravell](https://twitter.com/marcgravell), [@Nick_Craver](https:/
 ### 2. Compile-time verification of string templates / parameters
 
 We've already written Roslyn analyzers that did this.
-Since running the whole compilation with ASP.NET MVC 5 ~2 minutes on a beefy machine, was really a show stopper for developers, we wanted to give them instant-feedback inside the VS, which squiglies and all.
+Running the whole compilation with ASP.NET MVC 5 took ~2 minutes on a beefy machine this was really a show stopper for developers. We wanted to give them instant-feedback inside VS, with squiglies and all - analyzers provide that for us.
 
 ### 3. Tooling to extract strings, but AspNetCore compatible
 
@@ -121,10 +121,10 @@ With all of that in place, we now finally have a super-slim MoonSpeak library, t
     - compile-time safe
     - design-time feedback
     - support multiple pluralization tokens per template (e.g. 
-      `_s('User $userName$ has asked #numQuestions# questions and #numAnswers# answers')`)
+      `@_s('User $userName$ has asked #numQuestions# questions and #numAnswers# answers')`)
     - built-in Markdown support
       `@_m('hello [world](https://example.org)')`
-- a super-fast runtime base implementation which can work on both MVC5, and AspNetCore
+- a super-fast runtime base implementation which can work on both MVC5, and ASP.NET Core
 - C# string extraction via diagnostics
 
 All the other tooling that generates the translator resources, and provide translated strings to the implementation at runtime, are up to the consuming app.
