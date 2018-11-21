@@ -110,10 +110,10 @@ Turns out the analyzer mentioned above already has all the information we need!
 AspNetCore already pre-compiles `.cshtml` -> `.cs` as part of the build, those `.cs` files can be analyzer-ed.
 
 The main part of the work there was to port all our builds and build tooling to something that can potentially run on .NET Core CLI in the future.
-The best candidate for that seemed to be a [MSBuild `ILogger` implementation](https://docs.microsoft.com/en-us/visualstudio/msbuild/build-loggers?view=vs-2017), which can intercept the diagnostic messages, pin-pointing them to specific locations within a source file, and spit out the artifacts we can send out for translation in the end.
+The best candidate for that seemed to be an [MSBuild `ILogger` implementation](https://docs.microsoft.com/en-us/visualstudio/msbuild/build-loggers?view=vs-2017), which can intercept the diagnostic messages, pin-pointing them to specific locations within a source file, and spit out the artifacts we can send out for translation in the end.
 This is super application, and build configuration specific, so this implementation lives in our Stack Overflow solution.
 
-I've ran into an interesting edge case with [Roslyn vs MSBuild diagnostic levels](https://github.com/dotnet/roslyn/issues/30637) while doing this.
+I've run into an interesting edge case with [Roslyn vs MSBuild diagnostic levels](https://github.com/dotnet/roslyn/issues/30637) while doing this.
 
 I've skipped on one other important detail here, we have a separate tool that rewrites JavaScript, we just made it generate the same diagnostic messages as the C# tools.
 This allows us to run both that tool and the main build step in parallel, and get a unified view dump of all used strings in the end.
