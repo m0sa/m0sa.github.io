@@ -15,7 +15,7 @@ By popular demand, this is my writeup of our latest localization tooling refacto
 
 Lets talk about localization in general a bit first, though, to give you some background on how we ended up where here.
 
-It's a story full of tears, tech debt and regret.
+It's a story full of tears, tech debt, and regret.
 
 ## 1. Careers / Talent
 
@@ -43,7 +43,7 @@ Originally, the tooling only did what I've highlighted above;
 it extracted all string templates used to call our localization library, and verified that all the replacement tokens were passed in as arguments.
 
 Since we use ASP.NET MVC and Razor, it also had to extract strings from there, and in order to do that we had to generate C# from the `.cshtml` files.
-This turned out to also be the slowest step inside of `aspnet_compiler.exe` while precompiling the views (it had to re-do the same work, we already did before).
+This turned out to also be the slowest step inside of `aspnet_compiler.exe` while precompiling the views (it had to re-do the same work we already did before).
 
 If you're interested in more background, you can read [@mjibson](https://twitter.com/mjibson)'s Careers Localization series ([part 1](https://mattjibson.com/careers-localization/), [part 2](https://mattjibson.com/careers-api/), [part 3](https://mattjibson.com/careers-extraction/))
 
@@ -51,7 +51,7 @@ If you're interested in more background, you can read [@mjibson](https://twitter
 
 The real fun started when we had to localize Stack Overflow, where we care a bit more about perf, and we tried to avoid the long build times.
 
-We figured out we can hook into Razor, and affect what code it generates.
+We figured out we can hook into Razor and affect what code it generates.
 This allowed us to attach attributes to the generated C# views.
 We only needed tooling to inspect attributes from all the classes from the precompiled `.dll`.
 What it also allowed us to do, was to generate the localization code (a switch statement that only required the current locale at runtime, everything else was codegen-ed) directly in the C# produced by Razor.
@@ -73,12 +73,12 @@ You can read more about this whole project [here](https://stackoverflow.blog/201
 
 # .NET Core
 
-We currently still run on ASPNET MVC 5, on the full framework. Our ultimate goal is to be able to run on .NET Core. AspNetCore is the first stepping stone towards that.
+We currently still run on ASP.NET MVC 5, on the full framework. Our ultimate goal is to be able to run on .NET Core. ASP.NET Core is the first stepping stone towards that.
 
-As we were evaluating ASPNET vNext (== 5+), we had always hoped to roll with the metaprogramming features that were available in the previews, either there, or what was worked on in [Roslyn generators](https://github.com/dotnet/roslyn/blob/master/docs/features/generators.md).
+As we were evaluating ASP.NET vNext (== 5+), we had always hoped to roll with the metaprogramming features that were available in the previews, either there, or what was worked on in [Roslyn generators](https://github.com/dotnet/roslyn/blob/master/docs/features/generators.md).
 But the time to move to .NET Core and ASP.NET .NET Core is now, and unfortunately none of those features are around anymore...yet.
 Luckily, though, .NET tooling introduced some high-impact perf improvements that make the CLI tools much faster (e.g. `dotnet build-servers`).
-Additionally, AspNetCore Razor view pre-compilation is fast!
+Additionally, ASP.NET Core Razor view pre-compilation is fast!
 
 We evaluated the [new ASP.NET Core localization features](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.1&viewFallbackFrom=asp%E2%80%8C%E2%80%8Bnetcore-2.1), but they seemed very allocate-y (it allocates an array every time, things get boxed, etc), and it doesn't support some of the syntax edge cases we have.
 Considering this, and the fact that we'd have to rewrite all of precious "_s&_m" code, we made the decision to keep rolling with our own localization framework.
@@ -88,9 +88,9 @@ So we had to future-proof our tooling, while still maintaining backwards compati
 
 Our localization needs are still the same:
 
-### 1. No perf regressions
+### 1. No performance regressions
 Our code-gen wasn't perfect.
-It relied on the Roslyn `SyntaxTree` only, we didn't use the semantic model much.
+It relied on the [Roslyn `SyntaxTree`](https://github.com/dotnet/roslyn/wiki/Getting-Started-C%23-Syntax-Analysis) only, we didn't use the semantic model much.
 A lot of the generated code was not optimal (e.g. we passed around all of the template properties as `object`s), but calling it was still way faster that having the entire Razor pipeline on the stack.
 This gave us some wiggle room for writing an optimized runtime implementation.
 And we managed to make the runtime implementation as fast as the old (albeit not very optimized) compile-time code-gen-ed localization.
@@ -119,10 +119,10 @@ I've skipped on one other important detail here, we have a separate tool that re
 This allows us to run both that tool and the main build step in parallel, and get a unified view dump of all used strings in the end.
 
 ### Other
-Since we care about perf, we still don't want to hit the DB on application spin-up.
+Since we care about performance and a simple deployment model, we still don't want to hit the DB on application spin-up.
 We were still able to get code-gen all of our existing translations / resources into the .dll into as part of the build.
 We did that by exposing a `partial class` in code, and code-gen it's counterpart during build by executing a `.csx` file via [DotNetScript](https://github.com/filipw/dotnet-script).
-I did try to write a native MSBuild Task to do the same, but the fact that we have to hit a DB or HTTP endpoint as part of that, made it impossible.
+I did try to write a native MSBuild Task to do the same, but the fact that we have to hit a DB or HTTP endpoint as part of that made it impossible.
 A found this [blog post](https://natemcmaster.com/blog/2017/11/11/msbuild-task-with-dependencies/) by [@natemcmaster](https://twitter.com/natemcmaster) very helpful while digging into that.
 
 ## Future
@@ -133,7 +133,7 @@ With all of that in place, we now finally have a super-slim MoonSpeak library, t
     - compile-time safe
     - design-time feedback
     - support multiple pluralization tokens per template (e.g. 
-      `@_s('User $userName$ has asked #numQuestions# questions and #numAnswers# answers')`)
+      `@_s('User $userName$ has asked #numQuestions# questions and #numAnswers# answers', new { numQuestions = model.QuestionCount, numAnswers = model.AnswerCount })`
     - built-in Markdown support
       `@_m('hello [world](https://example.org)')`
 - a super-fast runtime base implementation which can work on both MVC5, and ASP.NET Core
