@@ -77,7 +77,7 @@ We currently still run on ASPNET MVC 5, on the full framework. Our ultimate goal
 ## Present
 
 As we were evaluating ASPNET vNext (== 5+), we had always hoped to roll with the metaprogramming features that were available in the previews, either there, or what was worked on in [Roslyn generators](https://github.com/dotnet/roslyn/blob/master/docs/features/generators.md).
-But the time to move to .NET Core, and ASPNET DotNetCore is now, and unfortunately none of those features are around anymore / yet.
+But the time to move to .NET Core and ASP.NET .NET Core is now, and unfortunately none of those features are around anymore...yet.
 Luckily, though, .NET tooling introduced some high-impact perf improvements that make the CLI tools much faster (e.g. `dotnet build-servers`).
 Additionally, AspNetCore Razor view pre-compilation is fast!
 
@@ -100,7 +100,7 @@ Running the whole compilation with ASP.NET MVC 5 took ~2 minutes on a beefy mach
 
 ### 3. Tooling to extract strings, but AspNetCore compatible
 
-The only new requirement here is that everything it has to work with the `.NET Core CLI`
+The only new requirement here is that everything it has to work with the [.NET Core CLI](https://github.com/dotnet/cli/)
 Turns out the analyzer mentioned above already has all the information we need!
 AspNetCore already pre-compiles `.cshtml` -> `.cs` as part of the build, those `.cs` files can be analyzer-ed.
 
