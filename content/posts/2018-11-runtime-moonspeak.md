@@ -82,7 +82,7 @@ Luckily, though, .NET tooling introduced some high-impact perf improvements that
 Additionally, ASP.NET Core Razor view pre-compilation is fast!
 
 We evaluated the [new ASP.NET Core localization features](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.1&viewFallbackFrom=asp%E2%80%8C%E2%80%8Bnetcore-2.1), but they seemed very allocate-y (it allocates an array every time, things get boxed, etc), and it doesn't support some of the syntax edge cases we have.
-Considering this, and the fact that we'd have to rewrite all of precious "_s&_m" code, we made the decision to keep rolling with our own localization framework.
+Considering this, and the fact that we'd have to rewrite all of precious "`_s`&`_m`" code, we made the decision to keep rolling with our own localization framework.
 So we had to future-proof our tooling, while still maintaining backwards compatibility with our old MVC stack.
 
 ## Present
