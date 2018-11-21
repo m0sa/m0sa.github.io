@@ -117,9 +117,9 @@ This allows us to run both that tool and the main build step in parallel, and ge
 
 ### Other
 Since we care about perf, we still don't want to hit the DB on application spin-up.
-We were still able to get code-gen all of our existing translations / resources into ther .dll into as part of the build.
-We did that by exposing a `partial class` in code, and code-gen it's counterpart during compilation by executing a .csx file via [DotNetScript](https://github.com/filipw/dotnet-script).
-I did try to write a native MSBuild taks to do the same, but the fact that we have to hit a DB or HTTP endpoint as part of that, made it impossible.
+We were still able to get code-gen all of our existing translations / resources into the .dll into as part of the build.
+We did that by exposing a `partial class` in code, and code-gen it's counterpart during build by executing a `.csx` file via [DotNetScript](https://github.com/filipw/dotnet-script).
+I did try to write a native MSBuild Task to do the same, but the fact that we have to hit a DB or HTTP endpoint as part of that, made it impossible.
 A found this [blog post](https://natemcmaster.com/blog/2017/11/11/msbuild-task-with-dependencies/) by [@natemcmaster](https://twitter.com/natemcmaster) very helpful while digging into that.
 
 ## Future
