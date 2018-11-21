@@ -142,6 +142,6 @@ With all of that in place, we now finally have a super-slim MoonSpeak library, t
 - C# string extraction via diagnostics
 
 All the other tooling that generates the translator resources, and provide translated strings to the implementation at runtime, are up to the consuming app.
-Even internally, we have different ways of doing that (Talent has a different workflow and intermediate formats there as Q&A).
+Even internally, we have different ways of doing that (Talent has a different workflow and intermediate formats there vs. Q&A).
 
 We might be finally getting to a point where we can open source MoonSpeak.
