@@ -45,6 +45,8 @@ it extracted all string templates used to call our localization library, and ver
 Since we use `ASP.NET MVC` and `razor`, it also had to extract strings from there, and in order to do that we had to generate C# from the `.cshtml` files.
 This turned out to also be the slowest step inside of `aspnet_compiler.exe` while precompiling the views (it had to re-do the same work, we already did before).
 
+If you're interested in more background, you can read [@mjibson](https://twitter.com/mjibson)'s Careers Localization series ([part 1](https://mattjibson.com/careers-localization/), [part 2](https://mattjibson.com/careers-api/), [part 3](https://mattjibson.com/careers-extraction/))
+
 ## 2. Stack Overflow
 
 The real fun started when we had to localize Stack Overflow, where we care a bit more about perf, and we tried to avoid the long build times.
@@ -65,6 +67,7 @@ We also needed to localize `.cs` files.
 Enter `roslyn` tooling, again, but with a twist!
 At that time, `csc.exe` was still the default C# compiler, and `aspnet_compiler.exe` was (and still is super slow).
 So we replaced _both_ of them, with the `roslyn`-based [StackExchange.Precompilation](https://github.com/StackExchange/StackExchange.Precompilation), and to top it of, we made it extensible so it could handle all of our localization needs (both extracting the strings, as well as precompiling localization in both `.cshtml` and `.cs` files).
+
 You can read more about this whole project [here](https://stackoverflow.blog/2015/07/23/announcing-stackexchange-precompilation/).
 
 # .NET Core
@@ -78,10 +81,12 @@ But the time to move to .NET Core, and ASPNET DotNetCore is now, and unfortunate
 Luckily, though, .NET tooling introduced some high-impact perf improvements that make the CLI tools much faster (e.g. `dotnet build-servers`).
 Additionally, AspNetCore `razor` view pre-compilation is fast!
 
+We had to future-proof our tooling, while still maintaining backwards compatibility with our old MVC stack.
+
 Our localization needs are still the same:
 
 ### 1. No perf regressions
-)ur code-gen wasn't perfect.
+Our code-gen wasn't perfect.
 It relied on the `roslyn` `SyntaxTree` only, we didn't use the semantic model much.
 A lot of the generated code was not optimal (e.g. we passed around all of the template properties as `object`s), but calling it was still way faster that having the entire `razor` pipeline on the stack.
 This gave us some wiggle room for writing an optimized runtime implementation.
