@@ -82,7 +82,7 @@ Luckily, though, .NET tooling introduced some high-impact perf improvements that
 Additionally, ASP.NET Core Razor view pre-compilation is fast!
 
 We evaluated the [new ASP.NET Core localization features](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.1&viewFallbackFrom=asp%E2%80%8C%E2%80%8Bnetcore-2.1), but they seemed very allocate-y (it allocates an array every time, things get boxed, etc), and it doesn't support some of the syntax edge cases we have.
-Considering this, and the fact that we'd have to rewrite all of precious "`_s`&`_m`" code, we made the decision to keep rolling with our own localization framework.
+Considering this, and the fact that we'd have to rewrite all of our precious "`_s`&`_m`" code, we made the decision to keep rolling with our own localization framework.
 So we had to future-proof our tooling, while still maintaining backwards compatibility with our old MVC stack.
 
 ## Present
@@ -112,7 +112,7 @@ AspNetCore already pre-compiles `.cshtml` -> `.cs` as part of the build, those `
 
 The main part of the work there was to port all our builds and build tooling to something that can potentially run on .NET Core CLI in the future.
 The best candidate for that seemed to be an [MSBuild `ILogger` implementation](https://docs.microsoft.com/en-us/visualstudio/msbuild/build-loggers?view=vs-2017), which can intercept the diagnostic messages, pin-pointing them to specific locations within a source file, and spit out the artifacts we can send out for translation in the end.
-This is super application, and build configuration specific, so this implementation lives in our Stack Overflow solution.
+This is super application and build configuration specific, so this implementation lives in our Stack Overflow solution.
 
 I've run into an interesting edge case with [Roslyn vs MSBuild diagnostic levels](https://github.com/dotnet/roslyn/issues/30637) while doing this.
 
@@ -124,7 +124,7 @@ Since we care about performance and a simple deployment model, we still don't wa
 We were still able to get code-gen all of our existing translations / resources into the .dll into as part of the build.
 We did that by exposing a `partial class` in code, and code-gen it's counterpart during build by executing a `.csx` file via [dotnet-script](https://github.com/filipw/dotnet-script).
 I did try to write a native MSBuild Task to do the same, but the fact that we have to hit a DB or HTTP endpoint as part of that made it impossible.
-A found this [blog post](https://natemcmaster.com/blog/2017/11/11/msbuild-task-with-dependencies/) by [@natemcmaster](https://twitter.com/natemcmaster) very helpful while digging into that.
+I found this [blog post](https://natemcmaster.com/blog/2017/11/11/msbuild-task-with-dependencies/) by [@natemcmaster](https://twitter.com/natemcmaster) very helpful while digging into that.
 
 ## Future
 
