@@ -1,6 +1,6 @@
 +++
 title = "Getting Stack Overflow Localization Tooling Ready for .NET Core"
-date = "2018-11-22"
+date = "2018-11-21"
 description = "Getting Stack Overflow Localization Tooling Ready for .NET Core"
 categories = [ "Development", "Stack Overflow", "Localization", "Roslyn" ]
 +++
@@ -93,6 +93,8 @@ This gave us some wiggle room for writing an optimized runtime implementation.
 And we managed to make the runtime implementation as fast as the old (albeit not very optimized) compile-time code-gen-ed localization.
 Kudos to [@marcgravell](https://twitter.com/marcgravell), [@Nick_Craver](https://twitter.com/Nick_Craver) for helping out here. [BenchMarkDotNet](https://github.com/dotnet/BenchmarkDotNet) was also insanely helpful.
 
+{{< tweet 1062440789014429697 >}}
+
 ### 2. Compile-time verification of string templates / parameters
 
 We've already written Roslyn analyzers that did this.
@@ -113,6 +115,13 @@ I've ran into an interesting edge case with [Roslyn vs MSBuild diagnostic levels
 I've skipped on one other important detail here, we have a separate tool that rewrites JavaScript, we just made it generate the same diagnostic messages as the C# tools.
 This allows us to run both that tool and the main build step in parallel, and get a unified view dump of all used strings in the end.
 
+### Other
+Since we care about perf, we still don't want to hit the DB on application spin-up.
+We were still able to get code-gen all of our existing translations / resources into ther .dll into as part of the build.
+We did that by exposing a `partial class` in code, and code-gen it's counterpart during compilation by executing a .csx file via [DotNetScript](https://github.com/filipw/dotnet-script).
+I did try to write a native MSBuild taks to do the same, but the fact that we have to hit a DB or HTTP endpoint as part of that, made it impossible.
+A found this [blog post](https://natemcmaster.com/blog/2017/11/11/msbuild-task-with-dependencies/) by [@natemcmaster](https://twitter.com/natemcmaster) very helpful while digging into that.
+
 ## Future
 
 With all of that in place, we now finally have a super-slim MoonSpeak library, that provides:
@@ -125,6 +134,7 @@ With all of that in place, we now finally have a super-slim MoonSpeak library, t
     - built-in Markdown support
       `@_m('hello [world](https://example.org)')`
 - a super-fast runtime base implementation which can work on both MVC5, and ASP.NET Core
+    - the main issue here was to distinguish between the [`System.Web.IHtmlString`](https://docs.microsoft.com/en-us/dotnet/api/system.web.ihtmlstring) (MVC5) and [`Microsoft.AspNetCore.Html.IHtmlContent`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.html.ihtmlcontent) (ASP.NET Core) interfaces, and their implementations (we have separate packages for each of them) for backing the _m implementation
 - C# string extraction via diagnostics
 
 All the other tooling that generates the translator resources, and provide translated strings to the implementation at runtime, are up to the consuming app.
