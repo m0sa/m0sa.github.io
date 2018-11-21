@@ -65,6 +65,7 @@ Turns out the perf hit of rendering a Razor view for every string you want to re
 
 We also needed to localize `.cs` files.
 Oh, and we also found a bunch of strings that needed new localization features, like multiple pluralization tokens, and the same string being used in different contexts that matter in some languages (e.g. [Declension](https://en.wikipedia.org/wiki/Declension)).
+
 Enter Roslyn tooling, again, but with a twist!
 At that time, `csc.exe` was still the default C# compiler, and `aspnet_compiler.exe` was (and still is super slow).
 So we replaced _both_ of them, with the Roslyn-based [StackExchange.Precompilation](https://github.com/StackExchange/StackExchange.Precompilation), and to top it of, we made it extensible so it could handle all of our localization needs (both extracting the strings, as well as precompiling localization in both `.cshtml` and `.cs` files).
