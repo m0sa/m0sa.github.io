@@ -1,6 +1,6 @@
 +++
 title = "Learning about MSBuild Global Properties - The Hard Way"
-date = "2018-11-21"
+date = "2019-02-25"
 description = "Learning about MSBuild Global Properties - The Hard Way"
 categories = [ "Development", "Stack Overflow", "MSBuild", "FAIL" ]
 +++
@@ -19,12 +19,12 @@ The magic code that introduces the target framework defines lives [here](https:/
 So, I started comparing what our CI build does differently from our local build (which worked fine).
 Finally I managed to repro what's going on, by including an additional `/p:DefineContants=WHATEVER` on the `msbuild` command-line, locally.
 Our CI PR verification build was passing a conditional compilation symbol in order to speed up the build a bit (we have one that enables us to only localize for English only, which means a lot less IO)
-Next, I compared the msbuild binlog (you can get one by running msbuild with the `/bl` switch), and used the excelent [MSBuild Binary and Structured Log Viewer](http://www.msbuildlog.com/) where I searched for `DefineConstants`.
+Next, I compared the MSBuild binlog (you can get one by running MSBuild with the `/bl` switch), and used the excellent [MSBuild Binary and Structured Log Viewer](http://www.msbuildlog.com/) where I searched for `DefineConstants`.
 The failing case turned out to short-circuit on whatever was passed in the command-line switch (e.g. WHATEVER), and never re-evaluated the property.
 Lucky for me, the binlog contained a hint as to why this is happening; the DefineConstants property was under a "global properties" node in the tree.
-Once I googled for "msbuild global properties" I got to [this piece of doc](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-properties#global-properties) fairly quickly.
+Once I googled for "MSBuild global properties" I got to [this piece of doc](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-properties#global-properties) fairly quickly.
 
-In the end, the TIL for the day was, if a property is a global property, and you pass it to msbuild via command-line args, the value passed in is used, regardless of what your build scripts do.
+In the end, the TIL for the day was, if a property is a global property, and you pass it to MSBuild via command-line args, the value passed in is used, regardless of what your build scripts do.
 
 I've came up with a trivial example to explain to the team, what was going on in MSBuild:
 
