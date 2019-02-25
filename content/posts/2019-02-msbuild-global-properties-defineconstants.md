@@ -28,7 +28,7 @@ Once I googled for "MSBuild global properties" I got to [this piece of doc](http
 
 In the end the TIL was: if a property is a global property, and you pass it to MSBuild via command-line args, the value passed in is used, regardless of what your build scripts do.
 
-I've came up with a trivial example to explain to the team, what was going on in MSBuild:
+I've come up with a trivial example to explain to the team, what was going on in MSBuild:
 
 ![MSBuild Global Property Example](https://i.stack.imgur.com/M9EYD.png)
 
