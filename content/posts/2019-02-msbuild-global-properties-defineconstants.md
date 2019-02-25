@@ -7,8 +7,10 @@ categories = [ "Development", "Stack Overflow", "MSBuild", "FAIL" ]
 
 One of the first steps in the Stack Overflow .NET Core migration was to extract a Common library that would target `netstandard`.
 This new project would be referenced in both the old ASP.NET MVC 5 as well as the new ASP.NET Core projects, so that we could start moving the old projects one-by-one.
-The new Common project had a few ASP.NET MVC / ASP.NET Core specific regions that were conditionally compiled via `#if NET472 <MVC 5 CODE> #else <ASPNETCORE CODE>` directives (thanks to the new `IHtmlContent` interface which replaced the old `IHtmlString` from `System.Web`, which we use across many models).
-The target framework conditional defines are a feature of the new SDK-style builds in the .NET Core ecosystem.
+We ended up targeting `net462` for ASP.NET MVC, and `netcoreapp2.2` for ASP.NET CORE.
+The new Common project had a few ASP.NET MVC / ASP.NET Core specific regions that were conditionally compiled via `#if NET462 <MVC 5 CODE> #else <ASPNETCORE CODE>` directives (thanks to the new `IHtmlContent` interface which replaced the old `IHtmlString` from `System.Web`, which we use across many models).
+The target framework moniker conditional defines are a feature of the new SDK-style builds in the .NET Core ecosystem.
+(Note, that switching on the TFM works for *us* because we don't plan on running ASP.NET CORE on the full framework - it might not work for you...)
 
 Everything built fine and dandy locally, but the fun started once we promoted our branch to a PR and the automatic build checks we had in place in GitHub / TeamCity kicked.
 No matter what we did, we only ever got into one branch of the conditional compilation; the other one was seemingly disregarded.
