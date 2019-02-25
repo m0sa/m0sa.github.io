@@ -6,7 +6,7 @@ categories = [ "Development", "Stack Overflow", "MSBuild", "FAIL" ]
 +++
 
 One of the first steps in the Stack Overflow .NET Core migration was to extract a Common library that would target `netstandard`.
-This new project would be referenced in both the old AspNetMvc 5 projects, as well as the net new AspNetCore, so that we could start moving the old projects one-by-one.
+This new project would be referenced in both the old AspNetMvc 5 as well as the new AspNetCore projects, so that we could start moving the old projects one-by-one.
 The new Common project had a few AspNetMvc / AspNetCore specific regions that were conditionally compiled via `#if NET472 <MVC 5 CODE> #else <ASPNETCORE CODE>` directives (thanks to the new `IHtmlContent` interface which replaced the old `IHtmlString` from `System.Web`, which we use across many models).
 The target framework conditional defines are a feature of the new SDK-style builds in the .NET Core ecosystem.
 
@@ -24,7 +24,7 @@ The failing case turned out to short-circuit on whatever was passed in the comma
 Lucky for me, the binlog contained a hint as to why this is happening; the DefineConstants property was under a "global properties" node in the tree.
 Once I googled for "MSBuild global properties" I got to [this piece of doc](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-properties#global-properties) fairly quickly.
 
-In the end, the TIL for the day was, if a property is a global property, and you pass it to MSBuild via command-line args, the value passed in is used, regardless of what your build scripts do.
+In the end the TIL was, if a property is a global property, and you pass it to MSBuild via command-line args, the value passed in is used, regardless of what your build scripts do.
 
 I've came up with a trivial example to explain to the team, what was going on in MSBuild:
 
