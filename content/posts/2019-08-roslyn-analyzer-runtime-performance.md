@@ -32,7 +32,7 @@ This is another Stack Overflow .NET Core migration war story.
 
 As we're working on porting Stack Overflow to .NET Core, there will be a temporary phase, where some of the applications in our codebase will run on ASP.NET MVC, while others will already be ported to ASP.NET CORE (see my previous [blog post](https://m0sa.net/posts/2019-02-msbuild-global-properties-defineconstants/)).
 For our domain logic and data models this means that they will have to be compiled against both.
-The most simple way to achieve this is if the don't depend on ASP.NET at all.
+The most simple way to achieve this is if they don't depend on ASP.NET at all.
 We've worked hard on this decoupling but we were still left with the occasional IHtmlString reference, etc.
 Some ASP.NET references had to stay, but we didn't want them to grow unwieldy.
 So we created Roslyn analyzers that check for ASP.NET usage, and fail the build if they find an usage that is not explicitly opted in (e.g. by using [`#pragma warning disable ASPNETUSAGE`](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning) or via [`SuppressMessageAttribute`](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.codeanalysis.suppressmessageattribute)).
