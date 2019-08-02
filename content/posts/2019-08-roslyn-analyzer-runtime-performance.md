@@ -1,5 +1,5 @@
 +++
-title = "How To Find Roslyn Analyzer Performance"
+title = "Roslyn Analyzer Performance"
 date = "2019-08-02"
 description = "A quick tip on how to easily surface roslyn analyzer performance numbers"
 categories = [ "Development", "MSBuild", "Roslyn", "Performance" ]
