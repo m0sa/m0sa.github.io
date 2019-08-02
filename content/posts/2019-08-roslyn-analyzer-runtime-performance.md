@@ -28,7 +28,7 @@ After the build is done, you can find the relevant bits right after the `Csc` ta
 
 I was looking into increased build times (see image above) after introducing some new analyzers, and I couldn't find a good reference for this kind of investigation.
 
-This is another Stack Overflow .NET Core migration war story.
+This is another [Stack Overflow](https://stackoverflow.com/) .NET Core migration war story.
 
 As we're working on porting Stack Overflow to .NET Core, there will be a temporary phase, where some of the applications in our codebase will run on ASP.NET MVC, while others will already be ported to ASP.NET CORE (see my previous [blog post](https://m0sa.net/posts/2019-02-msbuild-global-properties-defineconstants/)).
 For our domain logic and data models this means that they will have to be compiled against both.
