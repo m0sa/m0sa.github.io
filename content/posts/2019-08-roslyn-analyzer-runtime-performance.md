@@ -30,7 +30,7 @@ I was looking into increased build times (see image above) after introducing som
 
 This is another [Stack Overflow](https://stackoverflow.com/) .NET Core migration war story.
 
-As we're working on porting Stack Overflow to .NET Core, there will be a temporary phase, where some of the applications in our codebase will run on ASP.NET MVC, while others will already be ported to ASP.NET CORE (see my previous [blog post](https://m0sa.net/posts/2019-02-msbuild-global-properties-defineconstants/)).
+As we're working on porting Stack Overflow to .NET Core, there will be a temporary phase, where some of the applications in our codebase will run on ASP.NET MVC, while others will already be ported to ASP.NET Core (see my previous [blog post](https://m0sa.net/posts/2019-02-msbuild-global-properties-defineconstants/)).
 For our domain logic and data models this means that they will have to be compiled against both.
 The most simple way to achieve this is if they don't depend on ASP.NET at all.
 We've worked hard on this decoupling but we were still left with the occasional IHtmlString reference, etc.
