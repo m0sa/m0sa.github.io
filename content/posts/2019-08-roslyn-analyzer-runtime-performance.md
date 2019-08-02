@@ -9,7 +9,7 @@ categories = [ "Development", "MSBuild", "Roslyn", "Performance" ]
 
 Do you write Roslyn analyzers? Ever wondered what impact they have on your compilation times? Here's how you can get the stats!
 
-To get the numbers one can use the [ReportAnalyzer](https://github.com/microsoft/msbuild/blob/vs16.0/src/Tasks/Microsoft.CSharp.CurrentVersion.targets#L286) MSBuild property, that gets passed in to the C# / VB compilation tasks.
+To get the numbers one can use the [`ReportAnalyzer`](https://github.com/microsoft/msbuild/blob/vs16.0/src/Tasks/Microsoft.CSharp.CurrentVersion.targets#L286) MSBuild property, that gets passed in to the C# / VB compilation tasks.
 It's the MSBuild equivalent of the [`-reportanalyzer`](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/listed-alphabetically) C# compiler command line switch.
 
 I usually use it in combination with the [`-bl` MSBuild switch](https://github.com/Microsoft/msbuild/blob/master/documentation/wiki/Binary-Log.md), so I can inspect the output with the the excellent [MSBuild Binary and Structured Log Viewer](http://www.msbuildlog.com/).
