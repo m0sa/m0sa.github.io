@@ -35,6 +35,6 @@ For our domain logic and data models this means that they will have to be compil
 The most simple way to achieve this is if the don't depend on ASP.NET at all.
 We've worked hard on this decoupling but we were still left with the occasional IHtmlString reference, etc.
 Some ASP.NET references had to stay, but we didn't want them to grow unwieldy.
-So we created Roslyn analyzers that check for ASP.NET usage, and fail the build if they find an usage that is not explicitly opted in (e.g. by using `#pragma warning disable ASPNETUSAGE` or via [`SuppressMessageAttribute`](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.codeanalysis.suppressmessageattribute)).
+So we created Roslyn analyzers that check for ASP.NET usage, and fail the build if they find an usage that is not explicitly opted in (e.g. by using [`#pragma warning disable ASPNETUSAGE`](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning) or via [`SuppressMessageAttribute`](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.codeanalysis.suppressmessageattribute)).
 Developers that do feature work get a nice error at build time, and a squiggly in their editor, whenever they accidentally introduce a new ASP.NET reference into the shared library.
 This prevents them from stepping on the toes of the developers working on the port.
