@@ -4,7 +4,7 @@ copyright = "Copyright &copy; 2020 - m0sa.net"
 canonifyurls = true
 theme = "kiera"
 
-paginate = 3
+paginate = 10
 
 summaryLength = 30
 enableEmoji = true
