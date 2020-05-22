@@ -1,0 +1,12 @@
+<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{ .Site.Params.description | default "blog.m0sa.net" }}" />
+  <meta name="author" content="{{ .Params.Author | default .Site.Author.name }}" />
+
+  <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+  <meta property="og:description" content="{{ .Site.Params.description | default "blog.m0sa.net" }}">
+
+  <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }} ">
+  <meta name="twitter:description" content="{{ .Site.Params.description | default "blog.m0sa.net" }}">
+
+  {{ .Hugo.Generator -}}
