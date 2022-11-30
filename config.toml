@@ -1,6 +1,6 @@
 baseurl = "https://m0sa.net/"
 title = "m0sa.net"
-copyright = "Copyright &copy; 2020 - m0sa.net"
+copyright = "Copyright &copy; 2022 - m0sa.net"
 canonifyurls = true
 theme = "kiera"
 
@@ -11,7 +11,6 @@ enableEmoji = true
 pygmentsCodeFences = true
 
 disqusShortname = "" #Disqus shortname
-googleAnalytics = "UA-6745510-1" #Google Analytics ID
 
 [author]
     name = "Samo Prelog"
@@ -22,6 +21,7 @@ googleAnalytics = "UA-6745510-1" #Google Analytics ID
     twitter = "m0sa"
     instagram = ""
     stackoverflow = "155005"
+    mastodon = "infosec.exchange/@m0sa"
 
 [params]
     tagline = "using System;"
